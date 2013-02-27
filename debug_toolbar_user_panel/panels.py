@@ -82,7 +82,7 @@ class UserPanel(DebugPanel):
         return _('User')
 
     def nav_subtitle(self):
-        return self.request.user.is_authenticated() and self.request.user
+        return hasattr(self.request, 'user') and self.request.user.is_authenticated() and self.request.user
 
     def content(self):
         context = self.context.copy()
